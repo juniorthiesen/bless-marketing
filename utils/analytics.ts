@@ -1,8 +1,8 @@
 // Substitua pelo seu Pixel ID real
-export const PIXEL_ID = 'SEU_PIXEL_ID_AQUI'; 
+export const PIXEL_ID = '2286687071852039'; 
 
 // URL do seu Webhook (n8n, Zapier, Make) para processar CAPI server-side
-const WEBHOOK_URL = 'https://seu-webhook-url.com/api/conversion';
+const WEBHOOK_URL = 'https://webhook.scparcerias.com.br/webhook/bless-marketing';
 
 type EventType = 'PageView' | 'Lead' | 'InitiateCheckout' | 'Purchase' | 'ViewContent';
 
@@ -61,11 +61,11 @@ export const sendToWebhook = async (eventName: EventType, eventData: EventData, 
     };
 
     // Descomente abaixo quando tiver o webhook real configurado
-    // await fetch(WEBHOOK_URL, {
-    //   method: 'POST',
-    //   headers: { 'Content-Type': 'application/json' },
-    //   body: JSON.stringify(payload)
-    // });
+     await fetch(WEBHOOK_URL, {
+       method: 'POST',
+       headers: { 'Content-Type': 'application/json' },
+       body: JSON.stringify(payload)
+     });
     
     console.log(`🚀 Webhook Sent (${eventName}):`, payload);
   } catch (error) {
